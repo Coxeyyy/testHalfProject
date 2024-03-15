@@ -2,21 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/style_css/table.css}" rel="stylesheet"/>
     <title>Admin</title>
 </head>
 <body>
 
 Админ
-<div>
-    <a th:text="${admin.getId()}">item</a>
-    <a th:text="${admin.getLogin()}">item</a>
-    <a th:text="${admin.getPassword()}">item</a>
-    <a th:text="${admin.getRole.getCode()}">item</a>
-    <a th:href="@{/adminpanel/admins/{id}/edit(id=${admin.getId()})}">Изменить</a>
-    <form th:method="DELETE" th:action="@{/adminpanel/admins/{id}(id=${admin.getId()})}">
-        <input type="submit" value="Удалить"/>
-    </form>
-</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Логин</th>
+        <th>Статус</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${admin.getId()}">id</td>
+        <td th:text="${admin.getLogin()}">list</td>
+        <td th:text="${admin.getRole.getCode()}">status</td>
+        <td>
+            <a th:href="@{/adminpanel/admins/{id}/edit(id=${admin.getId()})}">Изменить данные</a>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/adminpanel/admins/{id}(id=${admin.getId()})}">
+                <input type="submit" value="Удалить администратора"/>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!--<div>-->
+<!--    <a th:text="${admin.getId()}">item</a>-->
+<!--    <a th:text="${admin.getLogin()}">item</a>-->
+<!--    <a th:text="${admin.getPassword()}">item</a>-->
+<!--    <a th:text="${admin.getRole.getCode()}">item</a>-->
+<!--    <a th:href="@{/adminpanel/admins/{id}/edit(id=${admin.getId()})}">Изменить</a>-->
+<!--    <form th:method="DELETE" th:action="@{/adminpanel/admins/{id}(id=${admin.getId()})}">-->
+<!--        <input type="submit" value="Удалить"/>-->
+<!--    </form>-->
+<!--</div>-->
 
 </body>
 </html>

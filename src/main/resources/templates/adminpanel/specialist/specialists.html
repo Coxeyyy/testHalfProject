@@ -22,7 +22,7 @@
         <td th:text="${specialist.getLogin()}">list</td>
         <td th:text="${specialist.getRole.getCode()}">status</td>
         <td>
-            <a th:href="@{/adminpanel/specialists/{id}(id=${specialist.getId()})}">Информация об админе</a>
+            <a th:href="@{/adminpanel/specialists/{id}(id=${specialist.getId()})}">Информация о специалисте</a>
         </td>
     </tr>
     </tbody>
