@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+</head>
+<body>
+
+Заказчик
+<div>
+    <a th:text="${customer.getId()}">item</a>
+    <a th:text="${customer.getLogin()}">item</a>
+    <a th:text="${customer.getPassword()}">item</a>
+    <a th:text="${customer.getRole.getCode()}">item</a>
+    <a th:href="@{/adminpanel/customers/{id}/edit(id=${customer.getId()})}">Изменить</a>
+    <a th:href="@{/adminpanel/customers/{id}/orders(id=${customer.getId()})}">Все заказы пользователя</a>
+    <form th:method="DELETE" th:action="@{/adminpanel/customers/{id}(id=${customer.getId()})}">
+        <input type="submit" value="Удалить"/>
+    </form>
+</div>
+
+</body>
+</html>

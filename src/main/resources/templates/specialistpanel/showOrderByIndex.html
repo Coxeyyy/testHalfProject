@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order by index</title>
+</head>
+<body>
+
+Заказ
+<p th:text="${order.getId()}">value</p>
+<p th:text="${order.getItems()}">value</p>
+<p th:text="${order.getStatus.getValue()}">value</p>
+<p th:text="${order.getCustomer().getLogin()}">value</p>
+<p th:text="${order.getEmployee().getLogin()}">value</p>
+<br/>
+<br/>
+<a th:if="${order.getStatus.getCode().equals('В процессе')}">
+<form th:method="PATCH" th:action="@{/specialistpanel/orders/{id}(id=${order.getId()})}">
+    <select name="selectedOption">
+        <option th:each="status: ${statuses}"
+                th:text="${status.getValue()}"
+                th:value="${status.getValue()}">
+            status
+    </select>
+    <button type="submit">Изменить статус заказа</button>
+</form>
+</a>
+<br/>
+
+</body>
+</html>

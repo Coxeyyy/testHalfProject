@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+</head>
+<body>
+
+Админ
+<div>
+    <a th:text="${admin.getId()}">item</a>
+    <a th:text="${admin.getLogin()}">item</a>
+    <a th:text="${admin.getPassword()}">item</a>
+    <a th:text="${admin.getRole.getCode()}">item</a>
+    <a th:href="@{/adminpanel/admins/{id}/edit(id=${admin.getId()})}">Изменить</a>
+    <form th:method="DELETE" th:action="@{/adminpanel/admins/{id}(id=${admin.getId()})}">
+        <input type="submit" value="Удалить"/>
+    </form>
+</div>
+
+</body>
+</html>

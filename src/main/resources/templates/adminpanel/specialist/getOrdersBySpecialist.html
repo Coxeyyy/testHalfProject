@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы специалиста</title>
+</head>
+<body>
+
+Заказы специалиста <p th:text="${specialist.getLogin()}">VALUE</p>
+
+<div th:each="order : ${ordersBySpecialist}">
+    <a th:text="${order.getId()}">order</a>
+    <a th:text="${order.getItems()}">order</a>
+    <a th:text="${order.getStatus.getCode()}">order</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register new Employee</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/adminpanel/register}" th:object="${employee}">
+    <label for="username">Введите логин: </label>
+    <input type="text" th:field="*{login}" id="username"/>
+    <div style="color:red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Login Error</div>
+    <br/>
+    <br/>
+    <label for="password">Введите пароль: </label>
+    <input type="password" th:field="*{password}" id="password"/>
+    <br/>
+    <br/>
+    <select th:field="*{role}">
+        <option th:each="Role: ${roles}"
+                th:text="${Role.value}"
+                th:value="${Role}">
+            role</option>
+    </select>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+    <br/>
+    <input type="submit" value="Sign up!"/>
+</form>
+
+</body>
+</html>

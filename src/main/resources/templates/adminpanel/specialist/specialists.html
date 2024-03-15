@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/style_css/table.css}" rel="stylesheet" />
+    <title>Все специалисты</title>
+</head>
+<body>
+Все специалисты
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Логин</th>
+        <th>Статус</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="specialist : ${specialists}">
+        <td th:text="${specialist.getId()}">id</td>
+        <td th:text="${specialist.getLogin()}">list</td>
+        <td th:text="${specialist.getRole.getCode()}">status</td>
+        <td>
+            <a th:href="@{/adminpanel/specialists/{id}(id=${specialist.getId()})}">Информация об админе</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!--<div th:each="specialist : ${specialists}">-->
+<!--    <a th:text="${specialist.getId()}">employee</a>-->
+<!--    <a th:href="@{/adminpanel/specialists/{id}(id=${specialist.getId()})}" th:text="${specialist.getLogin()}">employee</a>-->
+<!--    <a th:text="${specialist.getRole.getCode()}">employee</a>-->
+<!--</div>-->
+
+</body>
+</html>

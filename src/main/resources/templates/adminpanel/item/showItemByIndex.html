@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+Предмет
+<div>
+    <a th:text="${item.getId()}">item</a>
+    <a th:text="${item.getName()}">item</a>
+    <a th:text="${item.getPrice()}">item</a>
+    <a th:href="@{/adminpanel/items/{id}/edit(id=${item.getId()})}">Изменить</a>
+    <form th:method="DELETE" th:action="@{/adminpanel/items/{id}(id=${item.getId()})}">
+        <input type="submit" value="Удалить"/>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/style_css/table.css}" rel="stylesheet" />
+    <title>All orders</title>
+</head>
+<body>
+
+Все заказы
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Услуги</th>
+        <th>Статус</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.getId()}">id</td>
+        <td th:text="${order.getItems()}">list</td>
+        <td th:text="${order.getStatus.getCode()}">status</td>
+        <td>
+            <a th:href="@{/adminpanel/orders/{id}(id=${order.getId()})}">Информация о заказе</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!--<div th:each="order : ${orders}">-->
+<!--    <a th:text="${order.getId()}">order</a>-->
+<!--    <a th:text="${order.getItems()}">order</a>-->
+<!--    <a th:text="${order.getStatus.getCode()}">order</a>-->
+<!--&lt;!&ndash;    <a th:if="${order.getStatus.getCode().equals('В процессе')}">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a th:href="@{/adminpanel/orders/{id}(id=${order.getId()})}">Изменить</a>&ndash;&gt;-->
+<!--&lt;!&ndash;    </a>&ndash;&gt;-->
+<!--    <a th:href="@{/adminpanel/orders/{id}(id=${order.getId()})}">Информация о заказе</a>-->
+<!--</div> RABOTAET-->
+
+</body>
+</html>

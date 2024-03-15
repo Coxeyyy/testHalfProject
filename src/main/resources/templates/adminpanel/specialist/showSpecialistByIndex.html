@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Specialist</title>
+</head>
+<body>
+
+Специалист
+<div>
+    <a th:text="${specialist.getId()}">item</a>
+    <a th:text="${specialist.getLogin()}">item</a>
+    <a th:text="${specialist.getPassword()}">item</a>
+    <a th:text="${specialist.getRole.getCode()}">item</a>
+    <a th:href="@{/adminpanel/specialists/{id}/edit(id=${specialist.getId()})}">Изменить</a>
+    <a th:href="@{/adminpanel/specialists/{id}/orders(id=${specialist.getId()})}">Все заказы специалиста</a>
+    <form th:method="DELETE" th:action="@{/adminpanel/specialists/{id}(id=${specialist.getId()})}">
+        <input type="submit" value="Удалить"/>
+    </form>
+</div>
+
+</body>
+</html>

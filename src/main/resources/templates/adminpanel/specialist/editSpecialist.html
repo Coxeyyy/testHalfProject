@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>edit specialist</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/adminpanel/specialists/{id}(id=${specialist.getId()})}" th:object="${specialist}">
+    <label for="login">Введите логин: </label>
+    <input type="text" th:field="*{login}" id="login"/>
+    <div style="color:red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Login Error</div>
+    <br/>
+    <label for="password">Введите пароль: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+    <br/>
+    <br/>
+    <select th:field="*{role}">
+        <option th:each="Role: ${roles}"
+                th:text="${Role.value}"
+                th:value="${Role}">
+            role</option>
+    </select>
+    <input type="submit" value="Обновить"/>
+</form>
+
+</body>
+</html>
