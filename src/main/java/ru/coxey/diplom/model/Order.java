@@ -30,14 +30,18 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @Column(name = "order_price")
+    private Double orderPrice;
+
     public Order() {
     }
 
-    public Order(Customer customer, Employee employee, List<Item> items, Status status) {
+    public Order(Customer customer, Employee employee, List<Item> items, Status status, Double orderPrice) {
         this.customer = customer;
         this.employee = employee;
         this.items = items;
         this.status = status;
+        this.orderPrice = orderPrice;
     }
 
     public int getId() {
@@ -80,6 +84,14 @@ public class Order {
         this.status = status;
     }
 
+    public Double getOrderPrice() {
+        return orderPrice;
+    }
+
+    public void setOrderPrice(Double orderPrice) {
+        this.orderPrice = orderPrice;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -88,6 +100,7 @@ public class Order {
                 ", employee=" + employee +
                 ", items=" + items +
                 ", status=" + status +
+                ", orderPrice=" + orderPrice +
                 '}';
     }
 }

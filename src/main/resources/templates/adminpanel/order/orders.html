@@ -15,6 +15,7 @@
         <th>ID</th>
         <th>Услуги</th>
         <th>Статус</th>
+        <th>Сумма заказа</th>
         <th></th>
     </tr>
     </thead>
@@ -23,6 +24,7 @@
         <td th:text="${order.getId()}">id</td>
         <td th:text="${order.getItems()}">list</td>
         <td th:text="${order.getStatus.getCode()}">status</td>
+        <td th:text="${order.getOrderPrice()}">price</td>
         <td>
             <a th:href="@{/adminpanel/orders/{id}(id=${order.getId()})}">Информация о заказе</a>
         </td>
