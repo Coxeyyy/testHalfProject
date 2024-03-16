@@ -2,32 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/style_css/table.css}" rel="stylesheet"/>
     <title>order by id</title>
 </head>
 <body>
 
 Заказ
-<p th:text="${order.getId()}">value</p>
-<p th:text="${order.getItems()}">value</p>
-<p th:text="${order.getStatus.getValue()}">value</p>
-<p th:text="${order.getCustomer().getLogin()}">value</p>
-<span th:if="${order.getEmployee()}" th:text="${order.getEmployee().getLogin()}"></span>
-<span th:if="${order.getEmployee()} == null" th:text="'Специалист не назначен или уволен'"></span>
-<br/>
-<!--<a th:href="@{/adminpanel/orders/{id}/edit(id=${order.getId()})}">Изменить</a>-->
-    <a th:if="${order.getStatus.getCode().equals('В процессе')}">
-<!--        <a th:href="@{/adminpanel/orders/{id}/edit(id=${order.getId()})}">Изменить заказ</a>-->
-        <form th:method="PATCH" th:action="@{/adminpanel/orders/{id}(id=${order.getId()})}">
-            <select name="selectedOption">
-                <option th:each="specialist: ${specialists}"
-                        th:text="${specialist.getLogin()}"
-                        th:value="${specialist.getId()}">
-                    specialist
-            </select>
-            <button type="submit">Назначить специалиста</button>
-        </form>
-    </a>
-<br/>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Услуги</th>
+        <th>Статус</th>
+        <th>Заказчик</th>
+        <th>Специалист</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${order.getId()}">id</td>
+        <td th:text="${order.getItems()}">list</td>
+        <td th:text="${order.getStatus.getCode()}">status</td>
+        <td th:text="${order.getCustomer().getLogin()}">customer</td>
+        <td>
+            <span th:if="${order.getEmployee()}" th:text="${order.getEmployee().getLogin()}"></span>
+            <span th:if="${order.getEmployee()} == null" th:text="'Специалист не назначен или уволен'"></span>
+        </td>
+        <td>
+            <form th:method="PATCH" th:action="@{/adminpanel/orders/{id}(id=${order.getId()})}">
+                <select name="selectedOption">
+                    <option th:each="specialist: ${specialists}"
+                            th:text="${specialist.getLogin()}"
+                            th:value="${specialist.getId()}">
+                        specialist
+                </select>
+                <button type="submit">Назначить специалиста</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!--<p th:text="${order.getId()}">value</p>-->
+<!--<p th:text="${order.getItems()}">value</p>-->
+<!--<p th:text="${order.getStatus.getValue()}">value</p>-->
+<!--<p th:text="${order.getCustomer().getLogin()}">value</p>-->
+<!--<span th:if="${order.getEmployee()}" th:text="${order.getEmployee().getLogin()}"></span>-->
+<!--<span th:if="${order.getEmployee()} == null" th:text="'Специалист не назначен или уволен'"></span>-->
+<!--<br/>-->
+<!--&lt;!&ndash;<a th:href="@{/adminpanel/orders/{id}/edit(id=${order.getId()})}">Изменить</a>&ndash;&gt;-->
+<!--    <a th:if="${order.getStatus.getCode().equals('В процессе')}">-->
+<!--&lt;!&ndash;        <a th:href="@{/adminpanel/orders/{id}/edit(id=${order.getId()})}">Изменить заказ</a>&ndash;&gt;-->
+<!--        <form th:method="PATCH" th:action="@{/adminpanel/orders/{id}(id=${order.getId()})}">-->
+<!--            <select name="selectedOption">-->
+<!--                <option th:each="specialist: ${specialists}"-->
+<!--                        th:text="${specialist.getLogin()}"-->
+<!--                        th:value="${specialist.getId()}">-->
+<!--                    specialist-->
+<!--            </select>-->
+<!--            <button type="submit">Назначить специалиста</button>-->
+<!--        </form>-->
+<!--    </a>-->
+<!--<br/>-->
 
 </body>
 </html>
