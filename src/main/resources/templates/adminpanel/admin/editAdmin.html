@@ -2,28 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/style_css/style_for_change.css}" rel="stylesheet" />
     <title>edit Admin</title>
 </head>
 <body>
 
+Изменение админа
 <form th:method="PATCH" th:action="@{/adminpanel/admins/{id}(id=${admin.getId()})}" th:object="${admin}">
-    <label for="login">Введите логин: </label>
-    <input type="text" th:field="*{login}" id="login"/>
-    <div style="color:red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Login Error</div>
-    <br/>
-    <label for="password">Введите пароль: </label>
-    <input type="text" th:field="*{password}" id="password"/>
-    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
-    <br/>
-    <br/>
-    <select th:field="*{role}">
-        <option th:each="Role: ${roles}"
-                th:text="${Role.value}"
-                th:value="${Role}">
-            role</option>
-    </select>
-    <input type="submit" value="Обновить"/>
+<div class="table">
+    <div class="table_first">
+        <div class="table_row" pla>Введите логин</div>
+        <div class="table_row">Введите пароль</div>
+        <div class="table_row">Выберите роль</div>
+    </div>
+    <div class="table_second">
+        <input type="text" th:field="*{login}" id="login"/>
+        <div style="color:red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Login Error</div>
+        <input type="text" th:field="*{password}" id="password"/>
+        <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+        <select th:field="*{role}">
+            <option th:each="Role: ${roles}"
+                    th:text="${Role.value}"
+                    th:value="${Role}">
+                role
+            </option>
+        </select>
+        <input type="submit" value="Обновить"/>
+    </div>
+</div>
 </form>
+<!--<form th:method="PATCH" th:action="@{/adminpanel/admins/{id}(id=${admin.getId()})}" th:object="${admin}">-->
+<!--    <label for="login">Введите логин: </label>-->
+<!--    <input type="text" th:field="*{login}" id="login"/>-->
+<!--    <div style="color:red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Login Error</div>-->
+<!--    <br/>-->
+<!--    <label for="password">Введите пароль: </label>-->
+<!--    <input type="text" th:field="*{password}" id="password"/>-->
+<!--    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>-->
+<!--    <br/>-->
+<!--    <br/>-->
+<!--    <select th:field="*{role}">-->
+<!--        <option th:each="Role: ${roles}"-->
+<!--                th:text="${Role.value}"-->
+<!--                th:value="${Role}">-->
+<!--            role</option>-->
+<!--    </select>-->
+<!--    <input type="submit" value="Обновить"/>-->
+<!--</form>-->
 
 </body>
 </html>

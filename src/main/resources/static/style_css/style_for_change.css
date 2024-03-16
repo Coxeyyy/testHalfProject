@@ -1,0 +1,16 @@
+.table, .table_second{
+    display: flex;
+}
+
+.table_row{
+    border: 1px solid black;
+}
+
+.table_second{
+   flex-direction: column;
+}
+ 
+.table_second, .table_first{
+    width: 200px;
+  
+}
